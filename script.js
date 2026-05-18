@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const namespace = "iq-test-project"; // frei wählbar
-    const key = "visits"; // frei wählbar
-
     try {
-        // Zähler aufrufen + automatisch +1 erhöhen
-        const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+        const response = await fetch("https://api.api-ninjas.com/v1/counter", {
+            method: "GET",
+            headers: {
+                "X-Api-Key": "DEIN_API_KEY"
+            }
+        });
+
         const data = await response.json();
 
-        const countDisplay = document.getElementById('visitor-count');
+        console.log(data);
 
-        // Anzeige formatieren (z.B. 0001, 0012, ...)
-        countDisplay.innerText = data.value.toString().padStart(4, '0');
+        document.getElementById('visitor-count').innerText =
+            data.value.toString().padStart(4, '0');
 
     } catch (error) {
-        console.error("Counter konnte nicht geladen werden:", error);
-
-        // Fallback falls API nicht erreichbar ist
+        console.error("Counter Fehler:", error);
         document.getElementById('visitor-count').innerText = "----";
     }
 });
