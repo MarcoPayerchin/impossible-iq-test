@@ -87,3 +87,12 @@ footer {
     font-size: 0.8rem;
     opacity: 0.6;
 }
+
+.visitor-badge {
+    margin-top: 20px;
+}
+
+.visitor-badge img {
+    transform: scale(1.8);
+    image-rendering: crisp-edges;
+}
